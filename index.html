@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kris Fouda — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --ink: #1A1916;
+    --ink-light: #6B6860;
+    --ink-faint: #B4B2A9;
+    --accent: #2D5016;
+    --accent-light: #EAF3DE;
+    --accent-mid: #639922;
+    --border: rgba(26,25,22,0.12);
+    --serif: 'DM Serif Display', serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(247,245,240,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--ink-light);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-links .cta {
+    color: var(--accent);
+    font-weight: 500;
+    border-bottom: 1.5px solid var(--accent-mid);
+    padding-bottom: 1px;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-mid);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 1.05;
+    color: var(--ink);
+    max-width: 760px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent-mid);
+  }
+
+  .hero-desc {
+    margin-top: 2rem;
+    font-size: 1.05rem;
+    color: var(--ink-light);
+    max-width: 500px;
+    line-height: 1.7;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #2d2c28; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--ink); background: var(--surface); }
+
+  .hero-deco {
+    position: absolute;
+    right: -80px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(26,25,22,0.06);
+    pointer-events: none;
+  }
+  .hero-deco::after {
+    content: '';
+    position: absolute;
+    top: 40px; left: 40px; right: 40px; bottom: 40px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(26,25,22,0.06);
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 3rem;
+  }
+
+  /* SECTIONS commun */
+  section {
+    padding: 6rem 3rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-number {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  /* PROFIL */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+    color: var(--ink-light);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .fact-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+
+  .fact-row:first-child { border-top: 1px solid var(--border); }
+
+  .fact-label {
+    color: var(--ink-faint);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+
+  .fact-value {
+    color: var(--ink);
+    font-weight: 400;
+    text-align: right;
+  }
+
+  /* COMPÉTENCES */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.75rem;
+  }
+
+  .skill-card-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-mid);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .skill-card h4 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1rem;
+  }
+
+  .skill-tag {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.775rem;
+    font-weight: 500;
+    padding: 0.25rem 0.6rem;
+    border-radius: 3px;
+  }
+
+  .skill-tag-neutral {
+    background: var(--bg);
+    color: var(--ink-light);
+    font-size: 0.775rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+  }
+
+  /* PROJETS */
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .project-item {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    transition: opacity 0.2s;
+  }
+  .project-item:last-child { border-bottom: 1px solid var(--border); }
+
+  .project-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .project-cat {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 500;
+  }
+
+  .project-year {
+    font-size: 0.875rem;
+    color: var(--ink-light);
+  }
+
+  .project-body h3 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-body p {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.75rem;
+  }
+
+  .tech-badge {
+    font-size: 0.725rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--ink-light);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+  }
+
+  .project-link {
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+    white-space: nowrap;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.25rem;
+    transition: opacity 0.2s;
+  }
+  .project-link:hover { opacity: 0.7; }
+
+  .project-arrow {
+    font-size: 1rem;
+    color: var(--ink-faint);
+    transition: transform 0.2s;
+  }
+
+  /* PARCOURS */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 120px 1px 1fr;
+    gap: 0 2rem;
+    padding: 1.75rem 0;
+  }
+
+  .timeline-date {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    padding-top: 0.15rem;
+    text-align: right;
+    letter-spacing: 0.03em;
+  }
+
+  .timeline-line {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .timeline-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-mid);
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+  }
+
+  .timeline-connector {
+    flex: 1;
+    width: 1px;
+    background: var(--border);
+    margin-top: 6px;
+  }
+
+  .timeline-item:last-child .timeline-connector { display: none; }
+
+  .timeline-content h4 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.3rem;
+    color: var(--ink);
+  }
+
+  .timeline-content .institution {
+    font-size: 0.85rem;
+    color: var(--accent-mid);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-content p {
+    font-size: 0.875rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  /* CV SECTION */
+  .cv-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .cv-left h3 {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .cv-left p {
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    max-width: 400px;
+    line-height: 1.7;
+  }
+
+  .cv-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-intro p {
+    font-size: 1.05rem;
+    color: var(--ink-light);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-info-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--ink);
+    transition: color 0.2s;
+  }
+  .contact-row:first-child { border-top: 1px solid var(--border); }
+  .contact-row:hover { color: var(--accent); }
+
+  .contact-row-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-row-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--ink-light);
+    fill: none;
+  }
+
+  .contact-form-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-size: 0.775rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 500;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: border-color 0.2s;
+    outline: none;
+    resize: vertical;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent-mid);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--ink-faint);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2.5rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+  }
+
+  footer a {
+    color: var(--ink-faint);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  footer a:hover { color: var(--ink); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .section-divider { margin: 0 1.5rem; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .cv-section { flex-direction: column; align-items: flex-start; }
+
+    .project-item {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .project-meta { flex-direction: row; gap: 1rem; }
+    .project-arrow { display: none; }
+    .hero-deco { display: none; }
+
+    .timeline-item { grid-template-columns: 80px 1px 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 2.8rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a:not(.cta) { display: none; }
+  }
+
+  /* ANIMATION légère */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-label, .hero h1, .hero-desc, .hero-links {
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 { animation-delay: 0.08s; }
+  .hero-desc { animation-delay: 0.15s; }
+  .hero-links { animation-delay: 0.22s; }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a class="nav-logo" href="#top">K. Fouda</a>
+  <ul class="nav-links">
+    <li><a href="#about">Profil</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#parcours">Parcours</a></li>
+    <li><a href="#contact" class="cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="top"></div>
+<section class="hero">
+  <div class="hero-deco"></div>
+  <p class="hero-label">Étudiant BUT Informatique — IUT de Nantes</p>
+  <h1>Kris <em>Fouda</em></h1>
+  <p class="hero-desc">
+    Développeur en formation, passionné par le développement web, les systèmes et la cybersécurité. Je construis des projets qui allient rigueur technique et curiosité créative.
+  </p>
+  <div class="hero-links">
+    <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+    <a href="https://github.com/fouda-kris" target="_blank" rel="noopener" class="btn btn-ghost">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="opacity:0.8"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      GitHub
+    </a>
+    <a href="CV_de_Kris.pdf" download class="btn btn-ghost">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Mon CV
+    </a>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- À PROPOS -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <h2 class="section-title">Profil</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        Je m'appelle Kris Fouda, étudiant en première année de BUT Informatique à l'IUT de Nantes. Je suis curieux, autonome, et j'aime vraiment construire des choses — que ce soit une appli Java en cours, un bot Discord le soir, ou un site web pour un projet en équipe.
+      </p>
+      <p>
+        Ce qui me motive, c'est comprendre comment les systèmes fonctionnent et trouver des façons de les améliorer. Je code, je casse, je réessaie. C'est comme ça que j'apprends le mieux.
+      </p>
+    </div>
+    <div class="about-facts">
+      <div class="fact-row">
+        <span class="fact-label">Formation</span>
+        <span class="fact-value">BUT Informatique — 1ère année</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-label">École</span>
+        <span class="fact-value">IUT de Nantes</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-label">Diplôme</span>
+        <span class="fact-value">Bachelier 2025</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-label">Langues</span>
+        <span class="fact-value">Français · Espagnol · Italien (notions)</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-label">Localisation</span>
+        <span class="fact-value">Nantes, France</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-label">Intérêts</span>
+        <span class="fact-value">Dev web · Cybersécurité · IA · Jeux vidéo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- COMPÉTENCES -->
+<section id="competences">
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <h2 class="section-title">Compétences</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-label">Développement</div>
+      <h4>Langages & Outils</h4>
+      <p style="font-size:0.875rem; color:var(--ink-light); line-height:1.6;">Code appris en cours et sur projets personnels, du web au back-end.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">HTML / CSS</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Bash</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">Environnement</div>
+      <h4>Systèmes & DevOps</h4>
+      <p style="font-size:0.875rem; color:var(--ink-light); line-height:1.6;">Gestion de code, travail en équipe, premiers pas sur les conteneurs.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag-neutral">Méthodes Agiles</span>
+        <span class="skill-tag-neutral">GitHub</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">Savoir-faire</div>
+      <h4>Organisation & Comm.</h4>
+      <p style="font-size:0.875rem; color:var(--ink-light); line-height:1.6;">Compétences acquises en cours et en projet d'équipe.</p>
+      <div class="skill-tags">
+        <span class="skill-tag-neutral">Travail en équipe</span>
+        <span class="skill-tag-neutral">Présentation orale</span>
+        <span class="skill-tag-neutral">Word / Excel / PPT</span>
+        <span class="skill-tag-neutral">Synthèse</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">Certifications</div>
+      <h4>Reconnaissances</h4>
+      <p style="font-size:0.875rem; color:var(--ink-light); line-height:1.6;">Attestation de compétences numériques officiellement reconnue.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Pix</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJETS -->
+<section id="projets">
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <h2 class="section-title">Projets</h2>
+  </div>
+
+  <div class="projects-list">
+
+    <!-- NOUVEAU PROJET 1 : DIJKSTRA (PYTHON) -->
+    <div class="project-item">
+      <div class="project-meta">
+        <span class="project-cat">Académique (SAÉ)</span>
+        <span class="project-year">2026</span>
+      </div>
+      <div class="project-body">
+        <h3>Moteur de Graphes & Algorithme Dijkstra</h3>
+        <p>Développement complet du moteur logique d'une application de modélisation de réseau social. Conception algorithmique sécurisée pour manipuler des structures complexes (matrices de contiguïté et valuation) et optimisation du calcul du chemin le plus court sans fuite de mémoire.</p>
+        <div class="project-tech">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">Algorithme Dijkstra</span>
+          <span class="tech-badge">Matrices / Graphes</span>
+          <span class="tech-badge">Analyse Structurelle</span>
+        </div>
+        <a href="https://github.com/fouda-kris" target="_blank" rel="noopener" class="project-link">Voir sur GitHub →</a>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+
+    <!-- NOUVEAU PROJET 2 : INFRASTRUCTURES RÉSEAUX -->
+    <div class="project-item">
+      <div class="project-meta">
+        <span class="project-cat">Académique</span>
+        <span class="project-year">2026</span>
+      </div>
+      <div class="project-body">
+        <h3>Analyse Réseau & Serveur DHCP Sécurisé</h3>
+        <p>Analyse approfondie de trames réseau complexes et documentation technique de tables de routage. Configuration et déploiement d'un serveur DHCP sécurisé avec filtrage et isolation du trafic malveillant via Wireshark.</p>
+        <div class="project-tech">
+          <span class="tech-badge">Wireshark</span>
+          <span class="tech-badge">DHCP / Routage IP</span>
+          <span class="tech-badge">Sécurisation Infra</span>
+          <span class="tech-badge">Linux Logs</span>
+        </div>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+
+    <!-- NOUVEAU PROJET 3 : SIMULATION DE PARTICULES (BONUS CONFIG.JSON) -->
+    <div class="project-item">
+      <div class="project-meta">
+        <span class="project-cat">Personnel</span>
+        <span class="project-year">2026</span>
+      </div>
+      <div class="project-body">
+        <h3>Simulation Graphique de Particules</h3>
+        <p>Conception d'un moteur de rendu physique de particules paramétrable exécuté sous Ubuntu. Gestion de la vélocité, de la gravité, des couleurs et des forces de collision à partir d'un chargement dynamique de configurations structurées au format JSON.</p>
+        <div class="project-tech">
+          <span class="tech-badge">Ubuntu / Linux</span>
+          <span class="tech-badge">JSON Configuration</span>
+          <span class="tech-badge">Moteur de Rendu</span>
+        </div>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+
+    <div class="project-item">
+      <div class="project-meta">
+        <span class="project-cat">Académique</span>
+        <span class="project-year">2025 – 2026</span>
+      </div>
+      <div class="project-body">
+        <h3>SAÉ BUT Informatique — Site Web</h3>
+        <p>Participation à un projet d'équipe dans le cadre du BUT. Conception et développement d'un site web complet, gestion du code avec Git et présentation orale du projet devant jury.</p>
+        <div class="project-tech">
+          <span class="tech-badge">HTML / CSS</span>
+          <span class="tech-badge">Git</span>
+          <span class="tech-badge">Travail d'équipe</span>
+        </div>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+
+    <div class="project-item">
+      <div class="project-meta">
+        <span class="project-cat">Personnel</span>
+        <span class="project-year">2025</span>
+      </div>
+      <div class="project-body">
+        <h3>Portfolio personnel</h3>
+        <p>Ce site même — conçu pour présenter mes projets, mon parcours et mes compétences. Design pensé pour être lisible, professionnel et facile à maintenir.</p>
+        <div class="project-tech">
+          <span class="tech-badge">HTML</span>
+          <span class="tech-badge">CSS</span>
+          <span class="tech-badge">JavaScript</span>
+        </div>
+        <a href="https://github.com/fouda-kris" target="_blank" rel="noopener" class="project-link">Voir sur GitHub →</a>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+
+    <div class="project-item">
+      <div class="project-meta">
+        <span class="project-cat">Lycée</span>
+        <span class="project-year">2023 – 2025</span>
+      </div>
+      <div class="project-body">
+        <h3>Machine d'arcade en groupe</h3>
+        <p>Conception d'une borne d'arcade en groupe au lycée, destinée au confort des élèves. Projet alliant électronique, conception matérielle et développement logiciel.</p>
+        <div class="project-tech">
+          <span class="tech-badge">Conception groupe</span>
+          <span class="tech-badge">Électronique</span>
+        </div>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+
+    <div class="project-item">
+      <div class="project-meta">
+        <span class="project-cat">Lycée</span>
+        <span class="project-year">2023 – 2025</span>
+      </div>
+      <div class="project-body">
+        <h3>Canne pour malvoyants</h3>
+        <p>Conception en équipe d'une canne connectée pour personnes malvoyantes. Projet d'innovation solidaire combinant capteurs et traitement embarqué.</p>
+        <div class="project-tech">
+          <span class="tech-badge">Conception groupe</span>
+          <span class="tech-badge">Accessibilité</span>
+          <span class="tech-badge">Python</span>
+        </div>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+
+    <div class="project-item">
+      <div class="project-meta">
+        <span class="project-cat">Personnel</span>
+        <span class="project-year">2024</span>
+      </div>
+      <div class="project-body">
+        <h3>Exercices de développement autonome</h3>
+        <p>Résolution régulière d'exercices de développement logiciel en autonomie — algorithmes, petits outils, mini-projets — pour consolider mes bases en Python et Java.</p>
+        <div class="project-tech">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">Java</span>
+          <span class="tech-badge">Autonomie</span>
+        </div>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PARCOURS -->
+<section id="parcours">
+  <div class="section-header">
+    <span class="section-number">04</span>
+    <h2 class="section-title">Parcours</h2>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">2025 – Auj.</div>
+      <div class="timeline-line">
+        <div class="timeline-dot"></div>
+        <div class="timeline-connector"></div>
+      </div>
+      <div class="timeline-content">
+        <h4>BUT Informatique — 1ère année</h4>
+        <div class="institution">IUT de Nantes</div>
+        <p>Formation en développement logiciel, systèmes, réseaux et gestion de projets numériques. Travail en méthodes Agiles, SAÉ en équipe, projets pratiques.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2022 – 2025</div>
+      <div class="timeline-line">
+        <div class="timeline-dot"></div>
+        <div class="timeline-connector"></div>
+      </div>
+      <div class="timeline-content">
+        <h4>Baccalauréat (Bachelier)</h4>
+        <div class="institution">Lycée — Nantes</div>
+        <p>Obtention du baccalauréat en 2025. Projets de groupe : borne d'arcade, canne pour malvoyants, initiation au développement web et Python.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CV DOWNLOAD -->
+  <div class="cv-section" style="margin-top:3rem;">
+    <div class="cv-left">
+      <h3>Mon CV complet</h3>
+      <p>Toutes mes expériences, compétences et centres d'intérêt rassemblés dans un document téléchargeable.</p>
+    </div>
+    <div class="cv-right">
+      <a href="CV_de_Kris.pdf" download class="btn btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Télécharger le CV
+      </a>
+      <a href="https://github.com/fouda-kris" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="opacity:0.7"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        Voir mon GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-number">05</span>
+    <h2 class="section-title">Me contacter</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-intro">
+      <p>Une question sur mes projets, une idée de collaboration, ou juste envie d'échanger ? N'hésite pas à me contacter directement par mail ou via le formulaire.</p>
+      <div class="contact-info-rows">
+        <a href="mailto:foudakris@gmail.com" class="contact-row">
+          <div class="contact-row-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+        foudakris@gmail.com
+        </a>
+        <a href="https://github.com/fouda-kris" target="_blank" rel="noopener" class="contact-row">
+          <div class="contact-row-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          </div>
+          <p>github.com/fouda-kris</p>
+        </a>
+        <div class="contact-row" style="cursor:default; pointer-events:none;">
+          <div class="contact-row-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          Nantes, France
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-wrap">
+      <div class="form-group">
+        <label>Nom</label>
+        <input type="text" placeholder="Ton nom">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="ton@email.com">
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea rows="5" placeholder="Dis-moi ce que tu as en tête..."></textarea>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="handleSubmit(this)" style="align-self:flex-start;">
+        Envoyer le message
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Kris Fouda</span>
+  <div style="display:flex; gap:1.5rem;">
+    <a href="mailto:foudakris@gmail.com">Mail</a>
+    <a href="https://github.com/fouda-kris" target="_blank" rel="noopener">GitHub</a>
+    <a href="CV_de_Kris.pdf" download>CV</a>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.borderBottomColor = window.scrollY > 20
+      ? 'rgba(26,25,22,0.12)'
+      : 'rgba(26,25,22,0.06)';
+  });
+
+  // Formulaire de contact
+  function handleSubmit(btn) {
+    const name = document.querySelector('input[type="text"]').value.trim();
+    const email = document.querySelector('input[type="email"]').value.trim();
+    const msg = document.querySelector('textarea').value.trim();
+
+    if (!name || !email || !msg) {
+      btn.textContent = 'Remplis tous les champs';
+      btn.style.background = '#888';
+      setTimeout(() => {
+        btn.textContent = 'Envoyer le message';
+        btn.style.background = '';
+      }, 2000);
+      return;
+    }
+
+    const subject = encodeURIComponent('Message depuis ton portfolio — ' + name);
+    const body = encodeURIComponent('Nom : ' + name + '\nEmail : ' + email + '\n\n' + msg);
+    window.location.href = 'mailto:foudakris@gmail.com?subject=' + subject + '&body=' + body;
+  }
+
+  // Intersection observer pour les sections
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.project-item, .skill-card, .timeline-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(12px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
