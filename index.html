@@ -364,6 +364,39 @@
     max-width: 560px;
   }
 
+  /* Projet avec image côte à côte */
+  .project-body-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .project-body-split img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid rgba(26,25,22,0.1);
+    cursor: pointer;
+    display: block;
+  }
+
+  .project-body-split .project-text h3 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-body-split .project-text p {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.7;
+    max-width: 100%;
+  }
+
   .project-tech {
     display: flex;
     flex-wrap: wrap;
@@ -389,7 +422,7 @@
     display: flex;
     align-items: center;
     gap: 0.3rem;
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
     transition: opacity 0.2s;
   }
   .project-link:hover { opacity: 0.7; }
@@ -639,6 +672,10 @@
     .project-arrow { display: none; }
     .hero-deco { display: none; }
 
+    .project-body-split {
+      grid-template-columns: 1fr;
+    }
+
     .timeline-item { grid-template-columns: 80px 1px 1fr; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
@@ -811,7 +848,7 @@
 
   <div class="projects-list">
 
-    <!-- NOUVEAU PROJET 1 : DIJKSTRA (PYTHON) -->
+    <!-- PROJET 1 : DIJKSTRA (PYTHON) — pas d'image, layout standard -->
     <div class="project-item">
       <div class="project-meta">
         <span class="project-cat">Académique (SAÉ)</span>
@@ -831,7 +868,7 @@
       <span class="project-arrow">→</span>
     </div>
 
-    <!-- NOUVEAU PROJET 2 : INFRASTRUCTURES RÉSEAUX -->
+    <!-- PROJET 2 : INFRASTRUCTURES RÉSEAUX — pas d'image, layout standard -->
     <div class="project-item">
       <div class="project-meta">
         <span class="project-cat">Académique</span>
@@ -850,26 +887,29 @@
       <span class="project-arrow">→</span>
     </div>
 
-    <!-- NOUVEAU PROJET 3 : SIMULATION DE PARTICULES (BONUS CONFIG.JSON) -->
+    <!-- PROJET 3 : SIMULATION DE PARTICULES — image + texte côte à côte -->
     <div class="project-item">
       <div class="project-meta">
         <span class="project-cat">Personnel</span>
         <span class="project-year">2026</span>
       </div>
-      <div class="project-body">
-        <h3>Simulation Graphique de Particules</h3>
-        <img src="particules.png" alt="Aperçu de la simulation de particules" style="width:100%; border-radius:6px; margin:0.8rem 0; border:1px solid rgba(26,25,22,0.1); cursor:pointer;" onclick="this.requestFullscreen()">
-        <p>Moteur de simulation en temps réel affichant jusqu'à 6 000+ particules avec gestion de la gravité, des collisions et du spawn configurable. Les particules forment des figures dynamiques (anneaux, nuages) en réponse aux paramètres physiques modifiables à la volée via raccourcis clavier.</p>
-        <div class="project-tech">
-          <span class="tech-badge">C / C++</span>
-          <span class="tech-badge">Rendu temps réel</span>
-          <span class="tech-badge">Physique simulée</span>
-          <span class="tech-badge">Linux</span>
+      <div class="project-body project-body-split">
+        <img src="particules.png" alt="Aperçu de la simulation de particules" onclick="this.requestFullscreen()">
+        <div class="project-text">
+          <h3>Simulation Graphique de Particules</h3>
+          <p>Moteur de simulation en temps réel affichant jusqu'à 6 000+ particules avec gestion de la gravité, des collisions et du spawn configurable. Les particules forment des figures dynamiques (anneaux, nuages) en réponse aux paramètres physiques modifiables à la volée via raccourcis clavier.</p>
+          <div class="project-tech">
+            <span class="tech-badge">C / C++</span>
+            <span class="tech-badge">Rendu temps réel</span>
+            <span class="tech-badge">Physique simulée</span>
+            <span class="tech-badge">Linux</span>
+          </div>
         </div>
       </div>
       <span class="project-arrow">→</span>
     </div>
 
+    <!-- PROJET 4 : SAÉ GRAPHES — pas d'image, layout standard -->
     <div class="project-item">
       <div class="project-meta">
         <span class="project-cat">SAÉ BUT Informatique</span>
@@ -889,24 +929,28 @@
       <span class="project-arrow">→</span>
     </div>
 
+    <!-- PROJET 5 : SAÉ SITE WEB — image + texte côte à côte -->
     <div class="project-item">
       <div class="project-meta">
         <span class="project-cat">Académique</span>
         <span class="project-year">2025 – 2026</span>
       </div>
-      <div class="project-body">
-        <h3>SAÉ BUT Informatique — Site Web</h3>
-        <img src="maillot.png" alt="Aperçu du site web SAÉ BUT" style="width:100%; border-radius:6px; margin:0.8rem 0; border:1px solid rgba(26,25,22,0.1); cursor:pointer;" onclick="this.requestFullscreen()">
-        <p>Participation à un projet d'équipe dans le cadre du BUT. Conception et développement d'un site web complet, gestion du code avec Git et présentation orale du projet devant jury.</p>
-        <div class="project-tech">
-          <span class="tech-badge">HTML / CSS</span>
-          <span class="tech-badge">Git</span>
-          <span class="tech-badge">Travail d'équipe</span>
+      <div class="project-body project-body-split">
+        <img src="maillot.png" alt="Aperçu du site web SAÉ BUT" onclick="this.requestFullscreen()">
+        <div class="project-text">
+          <h3>SAÉ BUT Informatique — Site Web</h3>
+          <p>Participation à un projet d'équipe dans le cadre du BUT. Conception et développement d'un site web complet, gestion du code avec Git et présentation orale du projet devant jury.</p>
+          <div class="project-tech">
+            <span class="tech-badge">HTML / CSS</span>
+            <span class="tech-badge">Git</span>
+            <span class="tech-badge">Travail d'équipe</span>
+          </div>
         </div>
       </div>
       <span class="project-arrow">→</span>
     </div>
 
+    <!-- PROJET 6 : PORTFOLIO — pas d'image, layout standard -->
     <div class="project-item">
       <div class="project-meta">
         <span class="project-cat">Personnel</span>
@@ -925,6 +969,7 @@
       <span class="project-arrow">→</span>
     </div>
 
+    <!-- PROJET 7 : ARCADE — pas d'image, layout standard -->
     <div class="project-item">
       <div class="project-meta">
         <span class="project-cat">Lycée</span>
@@ -941,24 +986,28 @@
       <span class="project-arrow">→</span>
     </div>
 
+    <!-- PROJET 8 : CANNE — image + texte côte à côte -->
     <div class="project-item">
       <div class="project-meta">
         <span class="project-cat">Lycée</span>
         <span class="project-year">2023 – 2025</span>
       </div>
-      <div class="project-body">
-        <h3>Canne pour malvoyants</h3>
-        <img src="canne.png" alt="Aperçu du projet canne pour malvoyants" style="width:100%; border-radius:6px; margin:0.8rem 0; border:1px solid rgba(26,25,22,0.1); cursor:pointer;" onclick="this.requestFullscreen()">
-        <p>Conception en équipe d'une canne connectée pour personnes malvoyantes. Projet d'innovation solidaire combinant capteurs et traitement embarqué.</p>
-        <div class="project-tech">
-          <span class="tech-badge">Conception groupe</span>
-          <span class="tech-badge">Accessibilité</span>
-          <span class="tech-badge">Python</span>
+      <div class="project-body project-body-split">
+        <img src="canne.png" alt="Aperçu du projet canne pour malvoyants" onclick="this.requestFullscreen()">
+        <div class="project-text">
+          <h3>Canne pour malvoyants</h3>
+          <p>Conception en équipe d'une canne connectée pour personnes malvoyantes. Projet d'innovation solidaire combinant capteurs et traitement embarqué.</p>
+          <div class="project-tech">
+            <span class="tech-badge">Conception groupe</span>
+            <span class="tech-badge">Accessibilité</span>
+            <span class="tech-badge">Python</span>
+          </div>
         </div>
       </div>
       <span class="project-arrow">→</span>
     </div>
 
+    <!-- PROJET 9 : EXERCICES — pas d'image, layout standard -->
     <div class="project-item">
       <div class="project-meta">
         <span class="project-cat">Personnel</span>
@@ -1049,7 +1098,7 @@
           <div class="contact-row-icon">
             <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </div>
-        foudakris@gmail.com
+          foudakris@gmail.com
         </a>
         <a href="https://github.com/fouda-kris" target="_blank" rel="noopener" class="contact-row">
           <div class="contact-row-icon">
@@ -1095,7 +1144,6 @@
 </footer>
 
 <script>
-  // Navbar scroll
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
     nav.style.borderBottomColor = window.scrollY > 20
@@ -1103,7 +1151,6 @@
       : 'rgba(26,25,22,0.06)';
   });
 
-  // Formulaire de contact
   function handleSubmit(btn) {
     const name = document.querySelector('input[type="text"]').value.trim();
     const email = document.querySelector('input[type="email"]').value.trim();
@@ -1124,7 +1171,6 @@
     window.location.href = 'mailto:foudakris@gmail.com?subject=' + subject + '&body=' + body;
   }
 
-  // Intersection observer pour les sections
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
